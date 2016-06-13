@@ -211,7 +211,7 @@ sub routing {
 			}
 		}
 		else {
-			$self->forbidden();
+			$self->forbidden("Forbidden. Delivery service not assigned to user.");
 		}
 	}
 	else {
@@ -233,7 +233,7 @@ sub capacity {
 			$self->get_cache_capacity( { delivery_service => $result->xml_id, cdn_name => $cdn_name } );
 		}
 		else {
-			$self->forbidden();
+			$self->forbidden("Forbidden. Delivery service not assigned to user.");
 		}
 	}
 	else {
@@ -253,7 +253,7 @@ sub health {
 			return ( $self->get_cache_health( { server_type => "caches", delivery_service => $result->xml_id, cdn_name => $cdn_name } ) );
 		}
 		else {
-			$self->forbidden();
+			$self->forbidden("Forbidden. Delivery service not assigned to user.");
 		}
 	}
 	else {
@@ -339,7 +339,7 @@ sub state {
 			$self->success($data);
 		}
 		else {
-			$self->forbidden();
+			$self->forbidden("Forbidden. Delivery service not assigned to user.");
 		}
 	}
 	else {
